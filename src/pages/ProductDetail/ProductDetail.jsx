@@ -25,11 +25,6 @@ function ProductDetail() {
   return (
     <div className="detail-container">
       <div className="detail-card">
-        <img
-          className="detail-image"
-          src={productInfo.image}
-          alt={productInfo.title}
-        />
         <div className="detail-content">
           <h1>{productInfo.title}</h1>
           <h3 className="detail-category">{productInfo.category}</h3>
