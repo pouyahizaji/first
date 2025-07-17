@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import "./ProductDetail.css";
 
 function ProductDetail() {
   const { id } = useParams();
@@ -30,7 +31,6 @@ function ProductDetail() {
           <h3 className="detail-category">{productInfo.category}</h3>
           <p className="detail-description">{productInfo.description}</p>
           <p className="detail-price">{productInfo.price} </p>
-
           <div className="btn-container">
             <button className="btn-cart" onClick={handleAddToCart}>
               Add to buy list
