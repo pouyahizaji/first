@@ -3,14 +3,8 @@ import { Outlet } from "react-router-dom";
 export const Layout = () => {
   return (
     <div>
-      <header
-        style={{
-          height: "100px",
-          width: "100rem",
-          backgroundColor: "white",
-        }}
-      >
-        btyhn7nyb
+      <header>
+        <h1>My shop</h1>
       </header>
       <main>
         <Outlet />
