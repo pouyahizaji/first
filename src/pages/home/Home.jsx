@@ -7,7 +7,6 @@ function Home() {
   const [filtered, setFiltered] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const first = useRef();
   useEffect(() => {
     first.current.focus();
     setIsLoading(true);
@@ -31,8 +30,6 @@ function Home() {
   return (
     <div className="bg-amber-500">
       <header className="App-header">
-        <h1 className="text-red-600">My shop</h1>
-
         <input
           className="searchBox"
           type="text"
@@ -44,18 +41,24 @@ function Home() {
 
         {isLoading && <h2>please wait...</h2>}
 
-        <ul className="list">
-          {filtered.map((item) => (
-            <Link to={`/product/${item.id}`}>
-              <div className="cart" key={item.id}>
-                <img alt={item.title} src={item.image} className="cartImage" />
-                <h3>{item.title}</h3>
-              </div>
-            </Link>
-          ))}
-        </ul>
+        <ProductList products={filtered} />
       </header>
     </div>
+  );
+}
+
+function ProductList({ products }) {
+  return (
+    <ul className="list">
+      {products.map((item) => (
+        <Link to={`/product/${item.id}`} key={item.id}>
+          <div className="cart">
+            <img alt={item.title} src={item.image} className="cartImage" />
+            <h3>{item.title}</h3>
+          </div>
+        </Link>
+      ))}
+    </ul>
   );
 }
 
