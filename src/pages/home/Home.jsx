@@ -8,7 +8,6 @@ function Home() {
   const [searchTerm, setSearchTerm] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
-    first.current.focus();
     setIsLoading(true);
     fetch(`https://fakestoreapi.com/products`)
       .then((res) => res.json())
@@ -34,7 +33,6 @@ function Home() {
           className="searchBox"
           type="text"
           placeholder="search product..."
-          ref={first}
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
