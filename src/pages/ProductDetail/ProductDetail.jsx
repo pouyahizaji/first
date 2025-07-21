@@ -16,7 +16,7 @@ function ProductDetail() {
   }, [id]);
 
   const handleAddToCart = () => {
-    navigate("/cart");
+    navigate("/product");
   };
 
   if (isLoading) return <h2 className="loading">is Loading...</h2>;
