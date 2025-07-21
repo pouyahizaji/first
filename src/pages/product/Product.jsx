@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./Product.css";
 
@@ -7,8 +7,10 @@ function Product() {
   const [productInfo, setProductInfo] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const buttonElement = useRef();
 
   useEffect(() => {
+    buttonElement.current.focus()
     setIsLoading(true);
     fetch(`https://fakestoreapi.com/products/${id}`)
       .then((response) => response.json())
@@ -28,7 +30,13 @@ function Product() {
         <h1>{productInfo.title}</h1>
         <h2>{productInfo.category}</h2>
         <div className="btn-container">
-          <button className="btn-cart" onClick={()=>buy({id})}>buy</button>
+          <button
+            className="btn-cart"
+            onClick={() => buy({ id })}
+            ref={buttonElement}
+          >
+            buy
+          </button>
         </div>
       </div>
     </div>

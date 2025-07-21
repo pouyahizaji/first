@@ -1,13 +1,15 @@
 import { Link } from "react-router-dom";
 import "./Home.css";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function Home() {
   const [products, setProducts] = useState([]);
   const [filtered, setFiltered] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const first = useRef();
   useEffect(() => {
+    first.current.focus();
     setIsLoading(true);
     fetch(`https://fakestoreapi.com/products`)
       .then((res) => res.json())
@@ -27,14 +29,15 @@ function Home() {
   }, [searchTerm, products]);
 
   return (
-    <div className="App">
+    <div className="bg-amber-500">
       <header className="App-header">
-        <h1>My shop</h1>
+        <h1 className="text-red-600">My shop</h1>
 
         <input
           className="searchBox"
           type="text"
           placeholder="search product..."
+          ref={first}
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
